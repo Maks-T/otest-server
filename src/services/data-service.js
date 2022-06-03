@@ -20,7 +20,7 @@ class DataService {
 
   update = async (data, login) => {
     console.log('post data: ', data);
-    await Data.updateMany(data);
+    await Data.updateMany({ login }, data);
 
     return { message: 'db updated' };
   };

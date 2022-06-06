@@ -19,7 +19,7 @@ class DataService {
   };
 
   update = async (data) => {
-    await Data.updateOne({ login: data.login }, ...data);
+    await Data.updateOne({ login: data.login }, data);
 
     return { message: 'db updated' };
   };

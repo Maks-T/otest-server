@@ -18,15 +18,11 @@ class DataController {
 
   update = async (req, res) => {
     try {
-      if (!req.query.login)
-        return res.status(401).json('401 user not unauthorized');
-
-      console.log('login : [update]', login);
-      const login = req.query.login.toLowerCase().trim();
-      const message = await dataService.update(req.body, login);
+      const message = await dataService.update(req.body);
 
       return res.json(message);
     } catch (e) {
+      console.error(e);
       return res.status(500).json(e);
     }
   };

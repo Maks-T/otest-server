@@ -3,7 +3,7 @@ const Data = require('../models/data');
 class DataService {
   get = async (login) => {
     const data = await Data.find({ login }, (err) => console.log(err));
-    console.log('data: ', data);
+
     if (!data.length) {
       const emptyData = {
         login,
@@ -18,11 +18,8 @@ class DataService {
     return data;
   };
 
-  update = async (data, login) => {
-    console.log('post data: ', data);
-    lg = data.login;
-    await Data.updateOne({ login: lg }, data);
-    // await Data.updateMany({ login }, data);
+  update = async (data) => {
+    await Data.updateOne({ login: data.login }, ...data);
 
     return { message: 'db updated' };
   };
